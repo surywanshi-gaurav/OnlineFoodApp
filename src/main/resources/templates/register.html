@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="header">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">Registration and Login System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully registered
+                    to our app!</div>
+            </div>
+            <div class="card-header">
+                <h2 class="text-center">Registration</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" role="form" th:action="@{/register/save}" th:object="${userRegistration}" autocomplete="off">
+                    <div class="form-group mb-3">
+                        <label class="form-label">User Id</label>
+                        <input class="form-control"
+                               id="u_Id"
+                               name="u_Id"
+                               placeholder="Enter User Id"
+                               th:field="*{u_Id}"
+                               type="text"
+                        />
+                        <p th:errors="*{u_Id}" class="text-danger"
+                           th:if="${#fields.hasErrors('u_Id')}">
+                        </p>
+                    </div>
+   
+					   
+                    <div class="form-group mb-3">
+                        <label class="form-label">First Name</label>
+                        <input class="form-control"
+                               id="userName"
+                               name="userName"
+                               placeholder="Enter first name"
+                               th:field="*{userName}"
+                               type="text"
+                        />
+                        <p th:errors="*{userName}" class="text-danger"
+                           th:if="${#fields.hasErrors('userName')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control"
+                               id="userEmail"
+                               name="userEmail"
+                               placeholder="Enter email address"
+                               th:field="*{userEmail}"
+                               type="email"
+                        />
+                        <p th:errors="*{userEmail}" class="text-danger"
+                           th:if="${#fields.hasErrors('userEmail')}">
+                        </p>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password</label>
+                        <input class="form-control"
+                               id="userPassword"
+                               name="userPassword"
+                               placeholder="Enter password"
+                               th:field="*{userPassword}"
+                               type="password"
+                        />
+                        <p th:errors="*{userPassword}" class="text-danger"
+                           th:if="${#fields.hasErrors('userPassword')}">
+                        </p>
+                    </div>
+					
+					<div class="form-group mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input class="form-control"
+                               id="userNumber"
+                               name="userNumber"
+                               placeholder="Enter phone number"
+                               th:field="*{userNumber}"
+                               type="text"
+                        />
+                        <p th:errors="*{userNumber}" class="text-danger"
+                           th:if="${#fields.hasErrors('userNumber')}">
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                        <span>Already registered? <a href="/" th:href="@{/login}">Login
+                             here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
